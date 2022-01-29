@@ -15,6 +15,7 @@ public class TypewriterEffect : MonoBehaviour
 {
     public Color defaultColor = Color.white;
     public bool resetAllColors = false;
+    public float pauseTime = 1.5f;
     public TextType[] words = new TextType[1];
 
     private TextType firstWord = new TextType();
@@ -72,6 +73,7 @@ public class TypewriterEffect : MonoBehaviour
             gameObject.GetComponent<Text>().text = "";
 
             firstWord.text = "Hello World";
+            firstWord.delay = 0.05f;
             words[0] = firstWord;
         }
 
@@ -79,7 +81,7 @@ public class TypewriterEffect : MonoBehaviour
         for (int i = 0; i < words.Length; i++) {
             if (words[i].text.ToLower() == "pause") {
                 words[i].color = new Color(0,0,0,0);
-                words[i].delay = 1.5f;
+                words[i].delay = pauseTime;
                 continue;
             }
 
